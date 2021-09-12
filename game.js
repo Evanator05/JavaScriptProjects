@@ -2,6 +2,8 @@ var WIDTH=700, HEIGHT=600, pi=Math.PI;
 var canvas, ctx, keystate;
 var upKey=38, downKey=40;
 var player, ai, ball;
+var objects = []
+
 
 score = {
   p1: 0,
@@ -17,7 +19,18 @@ player = {
   update: function() {
     if (keystate[upKey]) this.y -= 7;
     if (keystate[downKey]) this.y += 7;
+
+    //lock player in screen
+    if (this.y < 0) {
+      this.y = 0
+    }
+
+    if (this.y+this.height > HEIGHT) {
+      this.y = HEIGHT-this.height
+    }
+
   },
+
   draw: function() {
     drawBox(this.x,this.y,this.width,this.height,"blue");
   }
@@ -30,19 +43,23 @@ ai = {
   height: 100,
 
   update: function() {},
+
   draw: function() {
     drawBox(this.x,this.y,this.width,this.height,"red");
   }
 };
-ball = {
-  x: null,
-  y: null,
-  side: 20,
-  speed: 2,
-  angle: null,
 
-  update: function() {
+class Ball {
+  constructor(x,y,side,speed,angle,colour) {
+    this.x = x
+    this.y = y
+    this.side = side
+    this.speed = speed
+    this.angle = angle
+    this.colour = colour
+  }
 
+  update() {
     if (this.x+this.side < 0) {
       score.p2 += 1
       init();
@@ -52,20 +69,12 @@ ball = {
       init()
     }
 
-    if (this.angle > 380) {
-      this.angle -= 360
-    }
-
-    if (this.angle < 360) {
-      this.angle += 360
-    }
-
     //move ball
     this.x += Math.cos(deg2Rad(this.angle))*this.speed;
     this.y += Math.sin(deg2Rad(this.angle))*this.speed;
+  }
 
-  },
-  draw: function() {
+  draw() {
     drawBox(this.x,this.y,this.side,this.side,"green");
   }
 };
@@ -98,43 +107,58 @@ function main() {
 }
 
 function init() {
+  objects = [];
+
+  var ballDir = 0
+
+  while (ballDir == 0) {
+    ballDir += Math.floor(Math.random()*3-1)*90
+  }
+  ballDir += Math.random()*90 - 45
+  console.log(ballDir)
+  var ball = new Ball((WIDTH - 5)/2,(HEIGHT - 5)/2,5,2,ballDir,"yellow")
+  objects.push(ball)
+
+
+
   player.x = player.width;
   player.y = (HEIGHT - player.height)/2;
 
   ai.x = WIDTH - (player.width + ai.width);
   ai.y = (HEIGHT - player.height)/2;
 
-  ball.x = (WIDTH - ball.side)/2;
-  ball.y = (HEIGHT - ball.side)/2;
   ball.speed = 2
   ball.angle = 90;
-  var ballDir = 0
-  while (ballDir == 0) {
-    ballDir += Math.floor(Math.random()*3-1)
 
-  }
-  ball.angle += ballDir*90
-  ball.angle += Math.random()*90 - 45
 
 }
 
-
 function update() {
+
+  for (var object = 0; object < objects.length; object++) {
+    let obj = objects[object];
+    obj.update();
+    console.log(obj.x)
+  }
+
+  objects[0].update();
   player.update();
   ai.update();
-  ball.update();
+
 }
 
 function draw() {
+  //fill background
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-  ctx.fillStyle = "white";
-  ctx.fillText(50,50,"Hello")
+  for (let object; object < objects.length; object++) {
+    let obj = objects[object]
+    obj.draw()
+  }
 
   player.draw();
   ai.draw();
-  ball.draw();
 
 
   //set center line colour
@@ -151,20 +175,15 @@ function draw() {
   }
 
   //draw score
+  ctx.font = "30px Arial";
 
   //player 1
-  var p1score = String(score.p1)
-  console.log(p1score)
-  ctx.font = "30px Arial";
-  ctx.fillText(score.p1, (WIDTH/2)-20 - ctx.measureText(p1score).width, 35);
+  ctx.fillText(score.p1, (WIDTH/2)-20 - ctx.measureText(String(score.p1)).width, 35);
 
   //player 2
-  ctx.font = "30px Arial";
   ctx.fillText(score.p2, (WIDTH/2)+20, 35);
 
-
   ctx.restore();
-
 }
 
 function getDistanceBetween(x1, y1, x2, y2) {
