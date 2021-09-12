@@ -2,7 +2,6 @@ var WIDTH=1400, HEIGHT=700, pi=Math.PI;
 var canvas, ctx, keystate;
 var upKey=38, downKey=40;
 
-var ai;
 var objects = []
 
 score = {
