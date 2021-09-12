@@ -43,20 +43,19 @@ function main() {
 
 function init() {
   let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,2,0,"yellow")
-  let ball2 = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,2,90,"green")
   let player = new Player(20, (HEIGHT - 100)/2, 20, 100, "green")
 
 
   //set ball starting angle
   var ballDir = 0
   while (ballDir == 0) {
-    ballDir += Math.floor(Math.random()*3)-1
+    ballDir += (Math.floor(Math.random()*3)-1)*90
   }
-
+  ballDir += (Math.random()*90)-45
   ball.angle = ballDir
 
   //add player ball and ai to the list of objects
-  objects = [ball,ball2, player]
+  objects = [ball, player]
 
 }
 
