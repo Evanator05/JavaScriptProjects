@@ -3,6 +3,11 @@ var canvas, ctx, keystate;
 var upKey=38, downKey=40;
 var player, ai, ball;
 
+score = {
+  p1: 0,
+  p2: 0
+};
+
 player = {
   x: null,
   y: null,
@@ -33,10 +38,29 @@ ball = {
   x: null,
   y: null,
   side: 20,
-  speed: 5,
+  speed: 2,
   angle: null,
 
   update: function() {
+
+    if (this.x+this.side < 0) {
+      score.p2 += 1
+      init();
+    }
+    if (this.x > WIDTH) {
+      score.p1 += 1
+      init()
+    }
+
+    if (this.angle > 380) {
+      this.angle -= 360
+    }
+
+    if (this.angle < 360) {
+      this.angle += 360
+    }
+
+    //move ball
     this.x += Math.cos(deg2Rad(this.angle))*this.speed;
     this.y += Math.sin(deg2Rad(this.angle))*this.speed;
 
@@ -70,8 +94,7 @@ function main() {
     window.requestAnimationFrame(loop,canvas);
   };
 
-  window.requestAnimationFrame(loop,canvas)
-
+  window.requestAnimationFrame(loop,canvas);
 }
 
 function init() {
@@ -83,7 +106,7 @@ function init() {
 
   ball.x = (WIDTH - ball.side)/2;
   ball.y = (HEIGHT - ball.side)/2;
-
+  ball.speed = 2
   ball.angle = 90;
   var ballDir = 0
   while (ballDir == 0) {
@@ -126,6 +149,19 @@ function draw() {
     ctx.fillRect(x,y+step*0.25, w, step*0.5);
     y += step;
   }
+
+  //draw score
+
+  //player 1
+  var p1score = String(score.p1)
+  console.log(p1score)
+  ctx.font = "30px Arial";
+  ctx.fillText(score.p1, (WIDTH/2)-20 - ctx.measureText(p1score).width, 35);
+
+  //player 2
+  ctx.font = "30px Arial";
+  ctx.fillText(score.p2, (WIDTH/2)+20, 35);
+
 
   ctx.restore();
 
