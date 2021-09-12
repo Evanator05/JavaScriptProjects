@@ -11,6 +11,7 @@ score = {
 };
 
 function main() {
+  //create canvas
   canvas = document.createElement("canvas")
   canvas.width = WIDTH;
   canvas.height = HEIGHT;
@@ -20,6 +21,7 @@ function main() {
   keystate = {};
   keystate[38] = false
   keystate[40] = false
+
   document.addEventListener("keydown", function(evt) {
     keystate[evt.keyCode] = true;
   });
@@ -41,6 +43,7 @@ function main() {
 
 function init() {
   let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,2,0,"yellow")
+  let ball2 = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,2,90,"green")
   let player = new Player(20, (HEIGHT - 100)/2, 20, 100, "green")
 
 
@@ -53,7 +56,7 @@ function init() {
   ball.angle = ballDir
 
   //add player ball and ai to the list of objects
-  objects = [ball, player]
+  objects = [ball,ball2, player]
 
 }
 

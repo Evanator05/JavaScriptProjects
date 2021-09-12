@@ -1,4 +1,5 @@
 class Ball {
+
   constructor(x,y,side,speed,angle,colour) {
     this.x = x
     this.y = y
@@ -6,7 +7,8 @@ class Ball {
     this.speed = speed
     this.angle = angle
     this.colour = colour
-  }
+  };
+
   update() {
     //score points
     if (this.x+this.side < 0) {
@@ -26,9 +28,7 @@ class Ball {
       this.angle += 360
     }
 
-
     //bounce off of roof and floor
-
     if (this.y < 0) {
       this.angle += 90
     }
@@ -40,14 +40,16 @@ class Ball {
     //move ball
     this.x += Math.cos(deg2Rad(this.angle-90))*this.speed;
     this.y += Math.sin(deg2Rad(this.angle-90))*this.speed;
-  }
+  };
 
   draw() {
-    drawBox(this.x,this.y,this.side,this.side,"yellow")
-  }
+    drawBox(this.x,this.y,this.side,this.side,this.colour)
+  };
+
 };
 
 class Player {
+
   constructor(x,y,width,height,colour, speed = 7) {
     this.x = x
     this.y = y
@@ -58,9 +60,10 @@ class Player {
   };
 
   update() {
-    var uKey = keystate[upKey];
-    var yDir = 0;
-    yDir = ((Number(keystate[downKey])) - Number((keystate[upKey])));
+    //get the players button direction
+    var yDir = ((Number(keystate[downKey])) - Number((keystate[upKey])));
+
+    //move player
     this.y += this.speed*yDir;
 
     //lock player in screen
@@ -76,4 +79,5 @@ class Player {
   draw() {
     drawBox(this.x,this.y,this.width,this.height,this.colour);
   };
+
 };
