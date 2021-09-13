@@ -9,8 +9,6 @@ class Ball {
     this.colour = colour
   };
 
-
-
   update() {
 
     //score points
@@ -52,8 +50,6 @@ class Ball {
   draw() {
     drawBox(this.x,this.y,this.side,this.side,this.colour)
   };
-
-
 
 };
 
