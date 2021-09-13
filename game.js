@@ -44,7 +44,6 @@ function init() {
   let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,2,0,"yellow")
   let player = new Player(20, (HEIGHT - 100)/2, 20, 100, "green")
 
-
   //set ball starting angle
   var ballDir = 0
   while (ballDir == 0) {

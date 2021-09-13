@@ -40,8 +40,10 @@ class Ball {
 
     //left paddle collisions
     if (checkCollisions(this, objects[1])) {
-      this.angle = (getAngleTo(this.x,this.y,objects[1].x,objects[1].y+(objects[1].height/2)) - 180) + 90
+      this.angle = (getAngleTo(this.x+(this.side/2),this.y+(this.side/2),objects[1].x,objects[1].y+(objects[1].height/2)) - 180) + 90
+      this.speed += 0.2
     };
+
     //move ball
     this.x += Math.cos(deg2Rad(this.angle-90))*this.speed;
     this.y += Math.sin(deg2Rad(this.angle-90))*this.speed;
@@ -49,6 +51,34 @@ class Ball {
 
   draw() {
     drawBox(this.x,this.y,this.side,this.side,this.colour)
+  };
+
+};
+
+class Paddle {
+  constructor(x,y,width,height,colour) {
+    this.x = x
+    this.y = y
+    this.width = width
+    this.height = height
+    this.colour = colour
+  };
+
+  update() {
+
+    //lock paddle in screen
+    if (this.y < 0) {
+      this.y = 0;
+    };
+
+    if (this.y+this.height > HEIGHT) {
+      this.y = HEIGHT-this.height;
+    };
+
+  };
+
+  draw() {
+    drawBox(this.x,this.y,this.width,this.height,this.colour);
   };
 
 };
@@ -74,11 +104,11 @@ class Player {
     //lock player in screen
     if (this.y < 0) {
       this.y = 0;
-    }
+    };
 
     if (this.y+this.height > HEIGHT) {
       this.y = HEIGHT-this.height;
-    }
+    };
   };
 
   draw() {
