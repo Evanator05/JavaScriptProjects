@@ -43,10 +43,15 @@ class Ball {
       this.angle = (getAngleTo(this.x+(this.side/2),this.y+(this.side/2),objects[1].x,objects[1].y+(objects[1].height/2)) - 180) + 90
       this.speed += 0.2
     };
+    //right paddle collisions
+    if (checkCollisions(this, objects[2])) {
+      this.angle = (getAngleTo(this.x+(this.side/2),this.y+(this.side/2),objects[2].x+objects[2].width,objects[2].y+(objects[2].height/2)) - 180) + 90
+      this.speed += 0.2
+    };
 
     //move ball
-    this.x += Math.cos(deg2Rad(this.angle-90))*this.speed;
-    this.y += Math.sin(deg2Rad(this.angle-90))*this.speed;
+    this.x += Math.cos(deg2Rad(this.angle-90))*this.speed*SPEED_FACTOR;
+    this.y += Math.sin(deg2Rad(this.angle-90))*this.speed*SPEED_FACTOR;
   };
 
   draw() {
@@ -99,7 +104,7 @@ class Player {
     var yDir = ((Number(keystate[downKey])) - Number((keystate[upKey])));
 
     //move player
-    this.y += this.speed*yDir;
+    this.y += this.speed*yDir*SPEED_FACTOR;
 
     //lock player in screen
     if (this.y < 0) {
@@ -109,10 +114,50 @@ class Player {
     if (this.y+this.height > HEIGHT) {
       this.y = HEIGHT-this.height;
     };
+
   };
 
   draw() {
     drawBox(this.x,this.y,this.width,this.height,this.colour);
   };
+
+};
+
+class Ai {
+  constructor(x,y,width,height,colour,speed = 3) {
+    this.x = x
+    this.y = y
+    this.width = width
+    this.height = height
+    this.colour = colour
+    this.speed = speed
+  };
+
+  update() {
+    var trackingPoint = objects[0].y+(objects[0].side/2)
+    if (trackingPoint > this.y+(this.height/2)) {
+      this.y += this.speed*SPEED_FACTOR
+    };
+
+    if (trackingPoint < this.y+(this.height/2)) {
+      this.y -= this.speed*SPEED_FACTOR
+    };
+
+    //lock ai in screen
+    if (this.y < 0) {
+      this.y = 0;
+    };
+
+    if (this.y+this.height > HEIGHT) {
+      this.y = HEIGHT-this.height;
+    };
+
+
+  };
+
+  draw() {
+    drawBox(this.x, this.y, this.width, this.height, this.colour)
+  };
+
 
 };

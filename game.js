@@ -4,6 +4,8 @@ var upKey=38, downKey=40;
 
 var objects = []
 
+const SPEED_FACTOR = 2
+var mode = 2
 score = {
   p1: 0,
   p2: 0
@@ -20,6 +22,8 @@ function main() {
   keystate = {};
   keystate[38] = false
   keystate[40] = false
+  keystate[87] = false
+  keystate[83] = false
 
   document.addEventListener("keydown", function(evt) {
     keystate[evt.keyCode] = true;
@@ -34,30 +38,32 @@ function main() {
   var loop = function() {
     update();
     draw();
-    window.requestAnimationFrame(loop,canvas);
+    window.requestAnimationFrame(loop,canvas)
   };
 
   window.requestAnimationFrame(loop,canvas);
 }
 
 function init() {
-  let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,2,0,"yellow")
-  let player = new Player(20, (HEIGHT - 100)/2, 20, 100, "green")
+  let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,4,0,"yellow");
+  let player = new Player(20, (HEIGHT - 100)/2, 20, 100, "green", 7);
+  let ai = new Ai(WIDTH-40, (HEIGHT-100)/2, 20, 100, "purple", 7)
 
   //set ball starting angle
-  var ballDir = 0
+  var ballDir = 0;
   while (ballDir == 0) {
-    ballDir += (Math.floor(Math.random()*3)-1)*90
+    ballDir += (Math.floor(Math.random()*3)-1)*90;
   }
-  ballDir += (Math.random()*90)-45
-  ball.angle = ballDir
+  ballDir += (Math.random()*90)-45;
+  ball.angle = ballDir;
 
   //add player ball and ai to the list of objects
-  objects = [ball, player]
+  objects = [ball, player, ai];
 
 }
 
 function update() {
+
   //update all objects
   for (i = 0; i < objects.length; i++) {
     objects[i].update()
