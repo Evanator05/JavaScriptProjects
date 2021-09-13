@@ -4,7 +4,7 @@ var upKey=38, downKey=40;
 
 var objects = []
 
-const SPEED_FACTOR = 2
+var SPEED_FACTOR = 2
 var mode = 2
 score = {
   p1: 0,
