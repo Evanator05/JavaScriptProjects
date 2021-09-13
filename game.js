@@ -102,18 +102,38 @@ function draw() {
 };
 
 function getDistanceBetween(x1, y1, x2, y2) {
-  return Math.sqrt((Math.pow((x2-x1),2),Math.pow((y2-y1),2)))
+  return Math.sqrt((Math.pow((x2-x1),2),Math.pow((y2-y1),2)));
 };
 
 function deg2Rad(degrees) {
   return degrees * (pi/180)
 };
+function rad2Deg(radiens) {
+  return radiens * (180/pi)
+};
+
+function getAngleTo(x1,y1,x2,y2) {
+  var a = x1-x2;
+  var b = y1-y2;
+
+  angle = Math.atan(b/a);
+
+  if (x1 > x2) {
+    angle -= deg2Rad(180);
+  };
+
+  return rad2Deg(angle);
+};
 
 function drawBox(xPos,yPos,width,height,colour) {
-  ctx.save()
-  ctx.fillStyle = colour
-  ctx.fillRect(xPos,yPos,width, height)
-  ctx.restore()
+  ctx.save();
+  ctx.fillStyle = colour;
+  ctx.fillRect(xPos,yPos,width, height);
+  ctx.restore();
+};
+
+function checkCollisions(object1, object2) {
+  return ( object1.x + object1.side > object2.x && object1.x < object2.x + object2.width && object1.y + object1.side > object2.y && object1.y < object2.y + object2.height );
 };
 
 main();

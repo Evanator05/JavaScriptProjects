@@ -9,7 +9,10 @@ class Ball {
     this.colour = colour
   };
 
+
+
   update() {
+
     //score points
     if (this.x+this.side < 0) {
       score.p2 += 1
@@ -37,6 +40,10 @@ class Ball {
       this.angle -= 90
     }
 
+    //left paddle collisions
+    if (checkCollisions(this, objects[1])) {
+      this.angle = (getAngleTo(this.x,this.y,objects[1].x,objects[1].y+(objects[1].height/2)) - 180) + 90
+    };
     //move ball
     this.x += Math.cos(deg2Rad(this.angle-90))*this.speed;
     this.y += Math.sin(deg2Rad(this.angle-90))*this.speed;
@@ -45,6 +52,8 @@ class Ball {
   draw() {
     drawBox(this.x,this.y,this.side,this.side,this.colour)
   };
+
+
 
 };
 
