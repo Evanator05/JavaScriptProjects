@@ -12,7 +12,7 @@ Online scoreboard
 ```javascript
 function fancyReadMe(cool) {
   if(cool) {
-    console.log("Yeah this looks Cool")
+    console.log("Yeah this looks Cool");
   };
 }
 ```
