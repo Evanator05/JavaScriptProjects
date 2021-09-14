@@ -10,9 +10,9 @@ Working paddles
 Online scoreboard
 
 ```javascript
-function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:'#foo'})
-  }
+function fancyReadMe(cool) {
+  if(cool) {
+    console.log("Yeah this looks Cool")
+  };
 }
 ```
