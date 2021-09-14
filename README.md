@@ -15,4 +15,6 @@ function fancyReadMe(cool) {
     console.log("Yeah this looks Cool");
   };
 };
+
+fancyReadMe(true);
 ```
