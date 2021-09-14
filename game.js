@@ -4,7 +4,7 @@ var upKey=38, downKey=40;
 
 var objects = []
 
-var SPEED_FACTOR = 2
+var SPEED_FACTOR = 1
 var mode = 2
 score = {
   p1: 0,
@@ -47,7 +47,7 @@ function main() {
 function init() {
   let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,4,0,"yellow");
   let player = new Player(20, (HEIGHT - 100)/2, 20, 100, "green", 7);
-  let ai = new Ai(WIDTH-40, (HEIGHT-100)/2, 20, 100, "purple", 7)
+  let ai = new Ai(WIDTH-40, (HEIGHT-100)/2, 20, 100, "purple")
 
   //set ball starting angle
   var ballDir = 0;
