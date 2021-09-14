@@ -9,6 +9,8 @@ Working paddles
 # Future features
 Online scoreboard
 
+# Cool ReadMe Thing
+
 ```javascript
 function fancyReadMe(cool) {
   if(cool) {
