@@ -1,10 +1,10 @@
 # Pong in javascript
  pong made in javascript
  
-#Features
+# Features
 Bad title screen
 Almost functional ball physics
 Working paddles
 
-#Future features
+# Future features
 Online scoreboard
