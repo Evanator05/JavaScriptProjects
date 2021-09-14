@@ -2,10 +2,10 @@ var WIDTH=1400, HEIGHT=700, pi=Math.PI;
 var canvas, ctx, keystate;
 var upKey=38, downKey=40;
 
-var objects = []
+var objects = [];
 
-var SPEED_FACTOR = 1
-var mode = 2
+var SPEED_FACTOR = 1;
+var mode = 2;
 score = {
   p1: 0,
   p2: 0
@@ -13,17 +13,17 @@ score = {
 
 function main() {
   //create canvas
-  canvas = document.createElement("canvas")
+  canvas = document.createElement("canvas");
   canvas.width = WIDTH;
   canvas.height = HEIGHT;
   window.ctx = canvas.getContext("2d");
   document.body.appendChild(canvas);
 
   keystate = {};
-  keystate[38] = false
-  keystate[40] = false
-  keystate[87] = false
-  keystate[83] = false
+  keystate[38] = false;
+  keystate[40] = false;
+  keystate[87] = false;
+  keystate[83] = false;
 
   document.addEventListener("keydown", function(evt) {
     keystate[evt.keyCode] = true;
@@ -38,16 +38,16 @@ function main() {
   var loop = function() {
     update();
     draw();
-    window.requestAnimationFrame(loop,canvas)
+    window.requestAnimationFrame(loop,canvas);
   };
 
   window.requestAnimationFrame(loop,canvas);
 }
 
 function init() {
-  let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,4,0,"yellow");
-  let player = new Player(20, (HEIGHT - 100)/2, 20, 100, "green", 7);
-  let ai = new Ai(WIDTH-40, (HEIGHT-100)/2, 20, 100, "purple")
+  let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,4,0,"white");
+  let player = new Player(20, (HEIGHT - 100)/2, 20, 100, "blue", 7);
+  let ai = new Ai(WIDTH-40, (HEIGHT-100)/2, 20, 100, "purple");
 
   //set ball starting angle
   var ballDir = 0;
@@ -74,9 +74,6 @@ function draw() {
   //fill background
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-
-
 
   //set center line colour
   ctx.fillStyle = "white";
