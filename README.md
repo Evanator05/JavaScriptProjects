@@ -8,3 +8,11 @@ Working paddles
 
 # Future features
 Online scoreboard
+
+```javascript
+function fancyAlert(arg) {
+  if(arg) {
+    $.facebox({div:'#foo'})
+  }
+}
+```
