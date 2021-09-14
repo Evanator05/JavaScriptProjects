@@ -55,7 +55,14 @@ class Ball {
   };
 
   draw() {
-    drawBox(this.x,this.y,this.side,this.side,this.colour)
+
+    ctx.save();
+    ctx.fillStyle = this.colour;
+    ctx.beginPath();
+    ctx.arc(this.x+(this.side)/2, this.y+(this.side)/2, 6, 0, 2*pi);
+    ctx.fill();
+    ctx.restore();
+
   };
 
 };
