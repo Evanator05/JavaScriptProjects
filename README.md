@@ -14,5 +14,5 @@ function fancyReadMe(cool) {
   if(cool) {
     console.log("Yeah this looks Cool");
   };
-}
+};
 ```
