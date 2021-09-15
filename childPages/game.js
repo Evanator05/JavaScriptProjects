@@ -2,10 +2,19 @@ var WIDTH=1400, HEIGHT=700, pi=Math.PI;
 var canvas, ctx, keystate;
 var upKey=38, downKey=40;
 
+//an array of every game object
 var objects = [];
 
+//changes the game speed
 var SPEED_FACTOR = 1;
+
+//was used to pick single and multiplayer, its unused right now
 var mode = 2;
+
+//ball spawning timer
+var timer = 60;
+
+//an object that holds both player scores
 score = {
   p1: 0,
   p2: 0
@@ -22,8 +31,6 @@ function main() {
   keystate = {};
   keystate[38] = false;
   keystate[40] = false;
-  keystate[87] = false;
-  keystate[83] = false;
 
   document.addEventListener("keydown", function(evt) {
     keystate[evt.keyCode] = true;
@@ -45,6 +52,7 @@ function main() {
 }
 
 function init() {
+  //instance objects
   let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,4,0,"white");
   let player = new Player(20, (HEIGHT - 100)/2, 20, 100, "blue", 7);
   let ai = new Ai(WIDTH-40, (HEIGHT-100)/2, 20, 100, "purple");
@@ -57,13 +65,32 @@ function init() {
   ballDir += (Math.random()*90)-45;
   ball.angle = ballDir;
 
-  //add player ball and ai to the list of objects
+  //add all objects to the array
   objects = [ball, player, ai];
 
 }
 
 function update() {
+  if (keystate[70]) {
+    timer -= 1
+    if (timer <=0) {
 
+      //set ball starting angle
+      var ballDir = 0;
+      while (ballDir == 0) {
+        ballDir += (Math.floor(Math.random()*3)-1)*90;
+      }
+      ballDir += (Math.random()*90)-45;
+
+      let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,4,-90,"white");
+
+      ball.angle = ballDir;
+
+      objects.push(ball)
+      timer= 60
+    };
+
+  };
   //update all objects
   for (i = 0; i < objects.length; i++) {
     objects[i].update()
@@ -112,20 +139,12 @@ function getDistanceBetween(x1, y1, x2, y2) {
 function deg2Rad(degrees) {
   return degrees * (pi/180)
 };
-function rad2Deg(radiens) {
-  return radiens * (180/pi)
+function rad2Deg(radians) {
+  return radians * (180/pi)
 };
 
 function getAngleTo(x1,y1,x2,y2) {
-  var a = x1-x2;
-  var b = y1-y2;
-
-  angle = Math.atan(b/a);
-
-  if (x1 > x2) {
-    angle -= deg2Rad(180);
-  };
-
+  angle = Math.atan((y1-y2)/(x1-x2)) - (deg2Rad(180)*(x1>x2));
   return rad2Deg(angle);
 };
 
