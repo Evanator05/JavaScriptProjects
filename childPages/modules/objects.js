@@ -1,12 +1,13 @@
 class Ball {
 
-  constructor(x,y,side,speed,angle,colour) {
+  constructor(x,y,side,speed,angle,colour, trail = []) {
     this.x = x
     this.y = y
     this.side = side
     this.speed = speed
     this.angle = angle
     this.colour = colour
+    this.trail = trail
   };
 
   update() {
@@ -52,6 +53,11 @@ class Ball {
     //move ball
     this.x += Math.cos(deg2Rad(this.angle-90))*this.speed*SPEED_FACTOR;
     this.y += Math.sin(deg2Rad(this.angle-90))*this.speed*SPEED_FACTOR;
+
+    this.trail.push([this.x,this.y])
+    if (this.trail.length > this.speed * 7) {
+      this.trail.shift()
+    };
   };
 
   draw() {
@@ -62,6 +68,16 @@ class Ball {
     ctx.arc(this.x+(this.side)/2, this.y+(this.side)/2, 6, 0, 2*pi);
     ctx.fill();
     ctx.restore();
+
+    for (var i = 0; i < this.trail.length; i++) {
+      ctx.save();
+      ctx.fillStyle = this.colour;
+      ctx.globalAlpha = i/this.trail.length;
+      ctx.beginPath();
+      ctx.arc(this.trail[i][0]+(this.side*(i/this.trail.length))/2, this.trail[i][1]+(this.side*(i/this.trail.length))/2, 6, 0, 2*pi);
+      ctx.fill();
+      ctx.restore();
+    };
 
   };
 
