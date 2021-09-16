@@ -54,8 +54,10 @@ function main() {
 function init() {
   //instance objects
   let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,4,0,"white");
-  let player = new Player(20, (HEIGHT - 100)/2, 20, 100, "blue", 7);
-  let ai = new Ai(WIDTH-40, (HEIGHT-100)/2, 20, 100, "purple");
+  let leftPaddle = new Paddle(20, (HEIGHT - 100)/2, 20, 100, "blue");
+  let player = new Player(leftPaddle, 7);
+  let rightPaddle = new Paddle(WIDTH-40, (HEIGHT-100)/2, 20, 100, "purple");
+  let ai = new Ai(rightPaddle, 7);
 
   //set ball starting angle
   var ballDir = 0;
@@ -66,7 +68,7 @@ function init() {
   ball.angle = ballDir;
 
   //add all objects to the array
-  objects = [ball, player, ai];
+  objects = [ball, ai, player, leftPaddle, rightPaddle];
 
 }
 
@@ -152,6 +154,15 @@ function drawBox(xPos,yPos,width,height,colour) {
   ctx.save();
   ctx.fillStyle = colour;
   ctx.fillRect(xPos,yPos,width, height);
+  ctx.restore();
+};
+
+function drawCircle(x,y,radius,colour) {
+  ctx.save();
+  ctx.fillStyle = colour;
+  ctx.beginPath();
+  ctx.arc(x+(radius)/2, y+(radius)/2, 6, 0, 2*pi);
+  ctx.fill();
   ctx.restore();
 };
 
