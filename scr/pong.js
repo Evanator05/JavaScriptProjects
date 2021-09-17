@@ -5,10 +5,13 @@ var upKey=38, downKey=40;
 //an array of every game object
 var objects = [];
 
+var difficultySettings = [3,5,7];
+var difficultyMode = 1
+
 //changes the game speed
 var SPEED_FACTOR = 1;
 
-var mode = 1;
+var mode = 2;
 
 //ball spawning timer
 var timer = 60;
@@ -61,7 +64,7 @@ function init() {
   if (mode == 1) {
     player2 = new Player(rightPaddle, 7);
   } else if (mode == 2) {
-    player2 = new Ai(rightPaddle, 7);
+    player2 = new Ai(rightPaddle, difficultySettings[difficultyMode]);
   };
 
 

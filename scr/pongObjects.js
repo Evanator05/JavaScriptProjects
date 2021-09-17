@@ -19,6 +19,7 @@ class Ball {
       score.p1 += 1;
       init();
     };
+
     //lock angle between 0 and 360
     if (this.angle > 360) {
       this.angle -= 360;
@@ -26,13 +27,18 @@ class Ball {
     if (this.angle < 0) {
       this.angle += 360;
     };
+
     //bounce off of roof and floor
     if (this.y < 0) {
-      this.angle += 90;
+      this.angle = 180-this.angle
+      this.y = 0
     };
     if (this.y + this.side > HEIGHT) {
-      this.angle -= 90;
+      this.angle = 180 - this.angle
+      this.y = HEIGHT-this.side
     };
+
+
     //left paddle collisions
     if (checkCollisions(this, objects[3])) {
       this.angle = (getAngleTo(this.x+(this.side/2),this.y+(this.side/2),objects[3].x,objects[3].y+(objects[3].height/2)) - 180) + 90;
@@ -43,9 +49,13 @@ class Ball {
       this.angle = (getAngleTo(this.x+(this.side/2),this.y+(this.side/2),objects[4].x+objects[4].width,objects[4].y+(objects[4].height/2)) - 180) + 90;
       this.speed += 0.2;
     };
+
     //move ball
-    this.x += Math.cos(deg2Rad(this.angle-90))*this.speed*SPEED_FACTOR;
-    this.y += Math.sin(deg2Rad(this.angle-90))*this.speed*SPEED_FACTOR;
+    var moveX = Math.cos(deg2Rad(this.angle-90))*this.speed*SPEED_FACTOR;
+    var moveY = Math.sin(deg2Rad(this.angle-90))*this.speed*SPEED_FACTOR;
+
+    this.x += moveX;
+    this.y += moveY;
     //add new segments to the balls trail
     this.trail.push([this.x,this.y]);
     //if there are more than speed times 7 segments delete old segments
