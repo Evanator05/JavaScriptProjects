@@ -30,6 +30,10 @@ button:hover {
   margin: 16px;
 }
 
+ul {
+  list-style-type: none;
+}
+
 #title {
   color: red;
   background-color: green;

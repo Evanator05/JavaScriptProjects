@@ -118,11 +118,11 @@ class Ai {
   update() {
     var trackingPoint = objects[0].y+(objects[0].side/2);
 
-
-
-    //if the ball is smaller than the paddles movement range lock the paddle right onto the balls y position
-    if (trackingPoint > this.paddle.y+(this.paddle.height/2) - this.speed && trackingPoint < this.paddle.y+(this.paddle.height/2) + this.speed) {
-      this.paddle.y = trackingPoint+(this.paddle.height/2);
+    if (trackingPoint > this.paddle.y + (this.paddle.height)/2) {
+      this.paddle.y += this.speed*SPEED_FACTOR;
+    };
+    if (trackingPoint < this.paddle.y + (this.paddle.height)/2) {
+      this.paddle.y -= this.speed*SPEED_FACTOR;
     };
   };
 
