@@ -93,14 +93,16 @@ class Paddle {
 };
 
 class Player {
-  constructor(paddle, speed = 7) {
+  constructor(paddle, speed = 7,keyUp = 38, keyDown = 40) {
     this.paddle = paddle;
     this.speed = speed;
+    this.keyUp = keyUp;
+    this.keyDown = keyDown;
   };
 
   update() {
     //get the players button direction
-    var yDir = ((Number(keystate[downKey])) - Number((keystate[upKey])));
+    var yDir = ((Number(keystate[this.keyDown])) - Number((keystate[this.keyUp])));
     //move player
     this.paddle.y += this.speed*yDir*SPEED_FACTOR;
   };

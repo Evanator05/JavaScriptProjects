@@ -9,7 +9,7 @@ var objects = [];
 var SPEED_FACTOR = 1;
 
 //was used to pick single and multiplayer, its unused right now
-var mode = 2;
+var mode = 1;
 
 //ball spawning timer
 var timer = 60;
@@ -31,7 +31,8 @@ function main() {
   keystate = {};
   keystate[38] = false;
   keystate[40] = false;
-
+  keystate[83] = false;
+  keystate[87] = false;
   document.addEventListener("keydown", function(evt) {
     keystate[evt.keyCode] = true;
   });
@@ -55,9 +56,16 @@ function init() {
   //instance objects
   let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,4,0,"white");
   let leftPaddle = new Paddle(20, (HEIGHT - 100)/2, 20, 100, "blue");
-  let player = new Player(leftPaddle, 7);
+  let player1 = new Player(leftPaddle, 7, 87, 83);
   let rightPaddle = new Paddle(WIDTH-40, (HEIGHT-100)/2, 20, 100, "purple");
-  let ai = new Ai(rightPaddle, 7);
+  let player2
+  if (mode == 1) {
+    player2 = new Player(rightPaddle, 7);
+  } else if (mode == 2) {
+    player2 = new Ai(rightPaddle, 7);
+  };
+
+
 
   //set ball starting angle
   var ballDir = 0;
@@ -68,7 +76,7 @@ function init() {
   ball.angle = ballDir;
 
   //add all objects to the array
-  objects = [ball, ai, player, leftPaddle, rightPaddle];
+  objects = [ball, player2, player1, leftPaddle, rightPaddle];
 
 }
 
