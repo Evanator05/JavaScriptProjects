@@ -8,7 +8,6 @@ var objects = [];
 //changes the game speed
 var SPEED_FACTOR = 1;
 
-//was used to pick single and multiplayer, its unused right now
 var mode = 1;
 
 //ball spawning timer
