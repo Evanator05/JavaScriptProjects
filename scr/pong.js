@@ -110,8 +110,6 @@ function update() {
 }
 
 function draw() {
-
-
   //fill background
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, WIDTH, HEIGHT);
