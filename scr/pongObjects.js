@@ -34,17 +34,19 @@ class Ball {
       this.y = 0 + ((HEIGHT-this.side)*Number(this.y + this.side > HEIGHT))
     };
 
+    for (let i = 0; i < objects.length; i++) {
+        if (objects[i] instanceof Paddle) {
+          //Paddle collisions
+          if (checkCollisions(this, objects[i])) {
+            this.angle = (getAngleTo(this.x+(this.side/2),this.y+(this.side/2),objects[i].x+(objects[i].width)/2,objects[i].y+(objects[i].height/2)) - 180) + 90;
+            this.speed += 0.2;
+          };
+        };
 
-    //left paddle collisions
-    if (checkCollisions(this, objects[3])) {
-      this.angle = (getAngleTo(this.x+(this.side/2),this.y+(this.side/2),objects[3].x,objects[3].y+(objects[3].height/2)) - 180) + 90;
-      this.speed += 0.2;
     };
-    //right paddle collisions
-    if (checkCollisions(this, objects[4])) {
-      this.angle = (getAngleTo(this.x+(this.side/2),this.y+(this.side/2),objects[4].x+objects[4].width,objects[4].y+(objects[4].height/2)) - 180) + 90;
-      this.speed += 0.2;
-    };
+
+
+
 
     //move ball
     var moveX = Math.cos(deg2Rad(this.angle-90))*this.speed*SPEED_FACTOR;
