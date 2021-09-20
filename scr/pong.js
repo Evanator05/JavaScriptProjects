@@ -6,7 +6,7 @@ var upKey=38, downKey=40;
 var objects = [];
 
 var difficultySettings = [3,5,7];
-var difficultyMode = 1
+var difficultyMode = 1;
 
 //changes the game speed
 var SPEED_FACTOR = 1;
@@ -52,7 +52,7 @@ function main() {
   };
 
   window.requestAnimationFrame(loop,canvas);
-}
+};
 
 function init() {
   //instance objects
@@ -60,7 +60,7 @@ function init() {
   let leftPaddle = new Paddle(20, (HEIGHT - 100)/2, 20, 100, "blue");
   let player1 = new Player(leftPaddle, 7, 87, 83);
   let rightPaddle = new Paddle(WIDTH-40, (HEIGHT-100)/2, 20, 100, "purple");
-  let player2
+  let player2;
   if (mode == 1) {
     player2 = new Player(rightPaddle, 7);
   } else if (mode == 2) {
@@ -80,7 +80,7 @@ function init() {
   //add all objects to the array
   objects = [ball, player2, player1, leftPaddle, rightPaddle];
 
-}
+};
 
 function update() {
   if (keystate[70]) {

@@ -29,13 +29,9 @@ class Ball {
     };
 
     //bounce off of roof and floor
-    if (this.y < 0) {
+    if (this.y < 0 || this.y + this.side > HEIGHT) {
       this.angle = 180-this.angle
-      this.y = 0
-    };
-    if (this.y + this.side > HEIGHT) {
-      this.angle = 180 - this.angle
-      this.y = HEIGHT-this.side
+      this.y = 0 + ((HEIGHT-this.side)*Number(this.y + this.side > HEIGHT))
     };
 
 
