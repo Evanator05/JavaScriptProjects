@@ -10,11 +10,9 @@ var difficultyMode = 1;
 
 //changes the game speed
 var SPEED_FACTOR = 1;
+//choses between singleplayer and multiplayer
 
-var mode = 2;
-
-//ball spawning timer
-var timer = 60;
+var mode = 1;
 
 //an object that holds both player scores
 score = {
@@ -60,11 +58,9 @@ function init() {
   //instance objects
   let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,4,0,"white");
   let leftPaddle = new Paddle(20, (HEIGHT - 100)/2, 20, 100, "blue");
-  let leftPaddle2 = new Paddle(20, (HEIGHT - 100)/2, 20, 100, "blue");
   let player1 = new Player(leftPaddle, 7, 87, 83);
   let rightPaddle = new Paddle(WIDTH-40, (HEIGHT-100)/2, 20, 100, "purple");
   let player2;
-  let leftAi = new Ai(leftPaddle2, difficultySettings[difficultyMode]);
   if (mode == 1) {
     player2 = new Player(rightPaddle, 7);
   } else if (mode == 2) {
@@ -80,7 +76,7 @@ function init() {
   ball.angle = ballDir;
 
   //add all objects to the array
-  objects = [ball, player2, player1, leftPaddle, rightPaddle, leftPaddle2];
+  objects = [ball, player2, player1, leftPaddle, rightPaddle];
 
 };
 

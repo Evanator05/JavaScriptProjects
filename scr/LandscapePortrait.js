@@ -7,10 +7,13 @@ function javascript() {
 function main() {
   let firstNumber, secondNumber;
 
-  //gets value of the height input field
   firstNumber = document.getElementById("textfield1").value;
+  secondNumber = document.getElementById("textfield2").value;
   //validate by alert or HTML text in p-tag
-  document.getElementById("validityTest1").innerHTML = alert(testNaN(firstNumber))
+  document.getElementById("validityTest1").innerHTML = alert(testNaN(firstNumber));
+  document.getElementById("validityTest1").innerHTML = testNaN(firstNumber);
+  document.getElementById("validityTest2").innerHTML = alert(testNaN(secondNumber));
+  document.getElementById("validityTest2").innerHTML = testNaN(secondNumber);
 
 };
 
