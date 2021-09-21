@@ -60,16 +60,16 @@ function init() {
   //instance objects
   let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,4,0,"white");
   let leftPaddle = new Paddle(20, (HEIGHT - 100)/2, 20, 100, "blue");
+  let leftPaddle2 = new Paddle(20, (HEIGHT - 100)/2, 20, 100, "blue");
   let player1 = new Player(leftPaddle, 7, 87, 83);
   let rightPaddle = new Paddle(WIDTH-40, (HEIGHT-100)/2, 20, 100, "purple");
   let player2;
+  let leftAi = new Ai(leftPaddle2, difficultySettings[difficultyMode]);
   if (mode == 1) {
     player2 = new Player(rightPaddle, 7);
   } else if (mode == 2) {
     player2 = new Ai(rightPaddle, difficultySettings[difficultyMode]);
   };
-
-
 
   //set ball starting angle
   var ballDir = 0;
@@ -80,31 +80,11 @@ function init() {
   ball.angle = ballDir;
 
   //add all objects to the array
-  objects = [ball, player2, player1, leftPaddle, rightPaddle];
+  objects = [ball, player2, player1, leftPaddle, rightPaddle, leftPaddle2];
 
 };
 
 function update() {
-  if (keystate[70]) {
-    timer -= 1
-    if (timer <=0) {
-
-      //set ball starting angle
-      var ballDir = 0;
-      while (ballDir == 0) {
-        ballDir += (Math.floor(Math.random()*3)-1)*90;
-      }
-      ballDir += (Math.random()*90)-45;
-
-      let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,4,-90,"white");
-
-      ball.angle = ballDir;
-
-      objects.push(ball)
-      timer= 60
-    };
-
-  };
   //update all objects
   for (i = 0; i < objects.length; i++) {
     objects[i].update()
@@ -141,7 +121,7 @@ function draw() {
   //draw objects
   for (i = 0; i < objects.length; i++) {
     objects[i].draw()
-  }
+  };
 };
 
 function getDistanceBetween(x1, y1, x2, y2) {

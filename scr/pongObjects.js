@@ -45,9 +45,6 @@ class Ball {
 
     };
 
-
-
-
     //move ball
     var moveX = Math.cos(deg2Rad(this.angle-90))*this.speed*SPEED_FACTOR;
     var moveY = Math.sin(deg2Rad(this.angle-90))*this.speed*SPEED_FACTOR;
@@ -120,9 +117,10 @@ class Player {
 };
 
 class Ai {
-  constructor(paddle, speed = 3) {
+  constructor(paddle, ball, speed = 3) {
     this.paddle = paddle;
     this.speed = speed;
+    this.ball = ball
   };
 
   update() {
@@ -135,7 +133,13 @@ class Ai {
       this.paddle.y -= this.speed*SPEED_FACTOR;
     };
   };
-
+  pickNewPoint() {
+    for (let i = 0; i < objects.length; i++) {
+      if (objects[i] instanceof Ball) {
+        this.ball = objects[i];
+      };
+    };
+  };
   draw() {};
 
 };
