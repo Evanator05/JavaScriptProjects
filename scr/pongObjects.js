@@ -115,6 +115,13 @@ class Player {
   draw() {};
 
 };
+function pickNewPoint() {
+    for (let i = 0; i < objects.length; i++) {
+      if (objects[i] instanceof Ball) {
+        return objects[i];
+      };
+    };
+  };
 
 class Ai {
   constructor(paddle, ball, speed = 3) {
@@ -123,8 +130,9 @@ class Ai {
     this.ball = ball
   };
 
-  update() {
-    var trackingPoint = objects[0].y+(objects[0].side/2);
+  update(trackingPoint) {
+    this.ball = pickNewPoint();
+    trackingPoint = this.ball.y+(this.ball.side/2);
 
     if (trackingPoint > this.paddle.y + (this.paddle.height)/2) {
       this.paddle.y += this.speed*SPEED_FACTOR;
@@ -132,14 +140,9 @@ class Ai {
     if (trackingPoint < this.paddle.y + (this.paddle.height)/2) {
       this.paddle.y -= this.speed*SPEED_FACTOR;
     };
+
   };
-  pickNewPoint() {
-    for (let i = 0; i < objects.length; i++) {
-      if (objects[i] instanceof Ball) {
-        this.ball = objects[i];
-      };
-    };
-  };
+
   draw() {};
 
 };

@@ -10,11 +10,16 @@ function main() {
   firstNumber = document.getElementById("textfield1").value;
   secondNumber = document.getElementById("textfield2").value;
   //validate by alert or HTML text in p-tag
-  document.getElementById("validityTest1").innerHTML = alert(testNaN(firstNumber));
+  alert(testNaN(firstNumber));
   document.getElementById("validityTest1").innerHTML = testNaN(firstNumber);
-  document.getElementById("validityTest2").innerHTML = alert(testNaN(secondNumber));
+  alert(testNaN(secondNumber));
   document.getElementById("validityTest2").innerHTML = testNaN(secondNumber);
-
+  console.log(firstNumber+secondNumber)
+  if (firstNumber > secondNumber) {
+    document.getElementById("answer").innerHTML = "Landscape"
+  } else {
+    document.getElementById("answer").innerHTML = "Portrait"
+  };
 };
 
 function testNaN(number) {

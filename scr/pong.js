@@ -156,4 +156,18 @@ function checkCollisions(object1, object2) {
   return ( object1.x + object1.side > object2.x && object1.x < object2.x + object2.width && object1.y + object1.side > object2.y && object1.y < object2.y + object2.height );
 };
 
+function reload() {
+  window.location.reload();
+};
+
+function singleplayer() {
+  mode = 2;
+  init()
+};
+
+function multiplayer() {
+  mode = 1;
+  init()
+}
+
 main();
