@@ -51,6 +51,7 @@ class Ball {
 
     this.x += moveX;
     this.y += moveY;
+
     //add new segments to the balls trail
     this.trail.push([this.x,this.y]);
     //if there are more than speed times 7 segments delete old segments
