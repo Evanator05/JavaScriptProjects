@@ -12,7 +12,7 @@ var difficultyMode = 1;
 var SPEED_FACTOR = 1;
 //choses between singleplayer and multiplayer
 
-var mode = 1;
+var mode = 2;
 
 //an object that holds both player scores
 score = {
