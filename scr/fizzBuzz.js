@@ -1,26 +1,23 @@
-let answer = []
-
+let answer = [];
+let amount = 500;
 function main() {
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < amount; i++) {
     if (i%3==0 && i%5==0) {
-      answer.push("FizzBuzz")
-
+      answer.push("FizzBuzz");
     } else if (i%3==0) {
-      answer.push("Fizz")
+      answer.push("Fizz");
     } else if (i%5==0){
-      answer.push("Buzz")
+      answer.push("Buzz");
     } else {
-      answer.push(i)
+      answer.push(i);
     };
   };
 
   for (let i = 0; i < answer.length; i++) {
-    let line = document.createElement("p");
-    line.innerHTML = answer[i]
-    document.appendChild(line)
+    var line = document.createElement("P");
+    line.innerText = answer[i];
+    document.getElementById('lines').appendChild(line);
   };
-
-  console.log(answer)
 };
 
-main()
+main();
