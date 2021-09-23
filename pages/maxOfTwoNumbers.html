@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
 
   <!-- Set the websites icon -->
-  <link rel="icon" type="image/png" href="icon/favicon-32x32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="icon/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="../icon/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="../icon/favicon-16x16.png" sizes="16x16" />
 
   <head>
     <meta charset="utf-8">
@@ -34,6 +34,20 @@
     <section>
       <form action="x.html" method="post" onsubmit="event.preventDefault">
       <!--  Makes form not work with PHP or other server side scripting -->
+
+      <p>&nbsp</p>
+
+      <p>
+        <label for="textfield">Number A:</label>
+        <input type="text" value=32 id="numberA">
+      </p>
+
+      <p>
+        <label for="textfield">Number B:</label>
+        <input type="text" value=32 id="numberB">
+      </p>
+
+      <p>Answer: <a id="answer"></a> </p>
 
     </section>
 
