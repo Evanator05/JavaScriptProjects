@@ -1,6 +1,9 @@
 let answer = [];
 let amount = 500;
+
 function main() {
+
+
   for (let i = 0; i < amount; i++) {
     if (i%3==0 && i%5==0) {
       answer.push("FizzBuzz");
@@ -16,7 +19,7 @@ function main() {
   for (let i = 0; i < answer.length; i++) {
     var line = document.createElement("P");
     line.innerText = answer[i];
-    document.getElementById('lines').appendChild(line);
+    document.body.appendChild(line);
   };
 };
 

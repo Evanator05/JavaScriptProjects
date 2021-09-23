@@ -10,8 +10,8 @@ var difficultyMode = 1;
 
 //changes the game speed
 var SPEED_FACTOR = 1;
-//choses between singleplayer and multiplayer
 
+//choses between singleplayer and multiplayer
 var mode = 2;
 
 //an object that holds both player scores
@@ -55,6 +55,7 @@ function main() {
 function init() {
 
   document.getElementById("pageName").innerHTML = "Pong Score: (" + score.p1 + "/" + score.p2 + ")"
+  
   //instance objects
   let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,4,0,"white");
   let leftPaddle = new Paddle(20, (HEIGHT - 100)/2, 20, 100, "blue");
