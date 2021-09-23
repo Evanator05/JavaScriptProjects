@@ -13,5 +13,3 @@ function main() {
   document.getElementById("answer").innerHTML = numberA * (numberA > numberB) + numberB * (numberB > numberA) + (numberA+numberB) * (numberA==numberB);
 
 };
-
-main()
