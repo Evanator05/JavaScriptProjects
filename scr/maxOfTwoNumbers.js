@@ -1,5 +1,3 @@
-let numberA = 0, numberB = 0;
-
 function main() {
   let numberA, numberB;
   //Get text from both number labels
