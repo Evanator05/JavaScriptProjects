@@ -10,9 +10,9 @@ function main() {
   if (!(isNaN(numberA) || isNaN(numberB))) {
     document.getElementById("answer").innerHTML = numberA * (numberA > numberB) + numberB * (numberB > numberA);
     if (numberA == numberB) {
-      document.getElementById("answer").innerHTML = "Equal"
+      document.getElementById("answer").innerHTML = "Equal";
     };
   } else {
-    document.getElementById("answer").innerHTML = "Please Input 2 Real Numbers"
+    document.getElementById("answer").innerHTML = "Please Input 2 Real Numbers";
   };
 };
