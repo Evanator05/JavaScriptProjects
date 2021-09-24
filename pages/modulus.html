@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Landscape or Portrait</title>
+    <title>pageTemplate</title>
     <link rel="stylesheet" href="../style1.css">
     <meta name="author" content="Evan Watson">
     <meta name="description" content="">
@@ -16,51 +16,35 @@
   </head>
 <nav ><a href="../index.html"> <button>Home</button> </a></nav>
   <body>
-    <header><h1 id="title">Landscape or Portrait</h1></header>
+    <header><h1 id="title">Modulus</h1></header>
+
     <div>
       <ul>
-        <li>Problem: Calculate if geometry example is landscape or portrait</li>
-        <li> Three test cases exist:</li>
+        <li>Problem: Calculate if a number is even or odd</li>
+        <li> Two test cases exist:</li>
         <ul>
-          <li> width > height</li>
-          <li> width < height</li>
-          <li> width = height</li>
+          <li> number = even</li>
+          <li> number = hard</li>
         </ul>
       </ul>
     </div>
 
     <section>
-      <form action="x.html" method="post" onsubmit="event.preventDefault">
-      <!--  Makes form not work with PHP or other server side scripting -->
 
       <p>&nbsp</p>
       <!-- Non-breaking real space, adds real space to the webpage that is not eliminated by the browser (hardcoded space) -->
       <p>
-        <label for="textfield">Width:</label>
-        <input type="text" name="textfield1" id="textfield1">
+        <label for="textfield">Number:</label>
+        <input type="text" id="number">
       </p>
 
-      <p>
-        <label for="textfield">Height:</label>
-        <input type="text" name="textfield2" id="textfield2">
-      </p>
+      <p>Answer: <a id="answer"></a></p>
 
-      <form action="x.html" method="post" onsubmit="event.preventDefault">
-    <!-- submit button -->
-    <br>
-    <button type="button" onclick="main()" name="button">Submit</button>
-    <br>
-    <h3>The answer is:
-      <a id="answer">What is the Answer?!!!</a>
-    </h3>
+      <button onclick="main()">Submit</button>
 
     </section>
 
-
-
-    <section><h3></h3><article><p></p></article></section>
-
-    <script type="text/javascript" src="../scr/LandscapePortrait.js"></script>
+    <script type="text/javascript" src="../scr/modulus.js"></script>
 
   </body>
 
