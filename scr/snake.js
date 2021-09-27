@@ -17,6 +17,7 @@ function main() {
   keystate = {};
   for (let i = 0; i < keys.length; i++) {
     keystate[keys[i]] = false;
+    console.log(keystate[keys[i]])
   }
 
   document.addEventListener("keydown", function(evt) {
@@ -36,6 +37,10 @@ function main() {
   };
 
   window.requestAnimationFrame(loop,canvas);
+};
+
+function init() {
+
 };
 
 function update() {
