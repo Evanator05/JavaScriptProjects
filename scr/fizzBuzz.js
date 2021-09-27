@@ -22,3 +22,25 @@ function main() {
 };
 
 main();
+
+function submit() {
+  let number = document.getElementById("input").value
+  number = Number(number)
+  if (!(isNaN(number))) {
+    document.getElementById("output").innerHTML = fizzBuzz(number)
+  } else {
+    document.getElementById("output").innerHTML = "Please input a real number"
+  };
+};
+
+function fizzBuzz(input) {
+  if (input%3==0 && input%5==0) {
+    return "FizzBuzz";
+  } else if (input%3==0) {
+    return "Fizz"
+  } else if (input%5==0){
+    return "Buzz";
+  } else {
+    return input;
+  };
+};

@@ -22,6 +22,9 @@
       <ul>
         <li>Problem: Input a speed and calculate the demerit points</li>
         <li>Note: speed limit is 70km/h</li>
+        <li>Note: for every 5km/h above speed limit, add 1 demerit point</li>
+        <li>Note: at any speed limit, 12 demerit points means lisence suspended</li>
+        <li>Note: Speed limit in example is 70</li>
         <li> Some test cases exist:</li>
         <ul>
           <li>68km/h: 0 points</li>
@@ -29,24 +32,29 @@
           <li>71km/h: 0 points</li>
           <li>74km/h: 0 points</li>
           <li>75km/h: 1 point</li>
-          <li> km/h</li>
-          <li> km/h</li>
-          <li>130km/h: lisense is suspended</li>
+          <li>130km/h: lisence is suspended</li>
         </ul>
       </ul>
     </div>
 
     <section>
-      <form action="x.html" method="post" onsubmit="event.preventDefault">
-      <!--  Makes form not work with PHP or other server side scripting -->
 
       <p>&nbsp</p>
       <!-- Non-breaking real space, adds real space to the webpage that is not eliminated by the browser (hardcoded space) -->
 
       <p>
-        <label for="tArea">Text Area or Box</label>
-        <textarea type="tArea" id="textBox" name="name" rows="8" cols="80"></textarea>
+        <label for="textfield">Speed Limit:</label>
+        <input type="text" name="textfield1" id="SpeedLimit">
       </p>
+      <p>
+        <label for="textfield">Current Speed:</label>
+        <input type="text" name="textfield1" id="CurrentSpeed">
+      </p>
+
+      <button onclick="submit()">Submit</button>
+
+      <p>Output: <a id="output"></a> </p>
+
       <p>&nbsp</p>
 
     </section>
