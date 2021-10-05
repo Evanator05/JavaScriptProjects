@@ -28,72 +28,22 @@
           <li> C: = 70 - 79</li>
           <li> B: = 80 - 89</li>
           <li> A: = 90 - 100</li>
+          <li>Enter Grades seperated by commas(,)</li>
         </ul>
       </ul>
     </div>
 
     <section>
-      <form action="x.html" method="post" onsubmit="event.preventDefault">
-      <!--  Makes form not work with PHP or other server side scripting -->
-
-      <p>&nbsp</p>
-      <!-- Non-breaking real space, adds real space to the webpage that is not eliminated by the browser (hardcoded space) -->
       <p>
-        <label for="textfield">Number1:</label>
-        <input type="text" name="textfield1" id="textfield1">
+        <textarea type="tArea" id="grades" name="name" rows="8" cols="80"></textarea>
       </p>
-
-      <p>
-        <label for="tArea">Text Area or Box</label>
-        <textarea type="tArea" name="name" rows="8" cols="80"></textarea>
-      </p>
-      <p>&nbsp</p>
-
-      <fieldset>
-        <legend>Case Studies</legend>
-        <div class="">TestCases
-          <ul>
-
-          </ul>
-        </div>
-
-        <label for="">
-          <input type="radio" name="radiogroup1" value="radio1" id="radiogroup1_0"> Radio 1
-        </label>
-        <br><label for="">
-          <input type="radio" name="radiogroup1" value="radio2" id="radiogroup1_1"> Radio 2
-        </label>
-        <br><label for="">
-          <input type="radio" name="radiogroup1" value="radio3" id="radiogroup1_0"> Radio 3
-        </label>
-
-
-      </fieldset>
-      <p>&nbsp</p>
-
-      <fieldset>
-        <legend>Case Studies</legend>
-        <div class="">TestCases
-          <ul>
-
-          </ul>
-        </div>
-
-        <label for="">
-          <input type="checkbox" name="CheckboxGroup1" value="radio1" id="checkboxgroup1_0"> checkbox 1
-        </label>
-        <br><label for="">
-          <input type="checkbox" name="CheckboxGroup1" value="radio2" id="checkboxgroup1_1"> checkbox 2
-        </label>
-        <br><label for="">
-          <input type="checkbox" name="CheckboxGroup1" value="radio3" id="checkboxgroup1_0"> checkbox 3
-        </label>
-      </fieldset>
-
-
     </section>
 
-    <script type="text/javascript" src=""></script>
+    <button type="button" onclick="pressed()" name="button">Submit</button>
+
+    <p>Your grade is an: <a id="grade"></a></p>
+
+    <script type="text/javascript" src="../scr/orderingGrades.js"></script>
 
   </body>
 
