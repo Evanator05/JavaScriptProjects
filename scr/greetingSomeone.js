@@ -26,4 +26,7 @@ function pickMessage(time) {
 };
 
 document.getElementById("time").innerHTML = getTime()[0]+":"+getTime()[1];
+if (getTime()[1] < 10) {
+  document.getElementById("time").innerHTML = getTime()[0]+":0"+getTime()[1]
+};
 document.getElementById("message").innerHTML = pickMessage(getTime()[0]);

@@ -55,4 +55,36 @@ function draw() {
   };
 };
 
+function getDistanceBetween(x1, y1, x2, y2) {
+  return Math.sqrt((Math.pow((x2-x1),2),Math.pow((y2-y1),2)));
+};
+
+function deg2Rad(degrees) {
+  return degrees * (pi/180);
+};
+function rad2Deg(radians) {
+  return radians * (180/pi);
+};
+
+function getAngleTo(x1,y1,x2,y2) {
+  angle = Math.atan((y1-y2)/(x1-x2)) - (deg2Rad(180)*(x1>x2));
+  return rad2Deg(angle);
+};
+
+function drawBox(xPos,yPos,width,height,colour) {
+  ctx.save();
+  ctx.fillStyle = colour;
+  ctx.fillRect(xPos,yPos,width,height);
+  ctx.restore();
+};
+
+function drawCircle(x,y,radius,colour) {
+  ctx.save();
+  ctx.fillStyle = colour;
+  ctx.beginPath();
+  ctx.arc(x+(radius)/2, y+(radius)/2, 6, 0, 2*pi);
+  ctx.fill();
+  ctx.restore();
+};
+
 main();

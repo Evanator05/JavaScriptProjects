@@ -1,5 +1,8 @@
 body {
   text-align: center;
+  padding: 10px;
+  border: 15px solid red;
+  background:linear-gradient(to top, white 5%, gray 100%);
 }
 
 button {
@@ -15,7 +18,7 @@ button {
 	padding:11px 31px;
 	text-decoration:none;
 	text-shadow:2px 2px 2px #000000;
-  margin-bottom: 16px;
+  margin: 8px;
 }
 
 button:hover {
@@ -31,11 +34,37 @@ button:hover {
 	padding:11px 31px;
 	text-decoration:none;
 	text-shadow:2px 2px 2px #000000;
-  margin-bottom: 16px;
+  margin: 8px;
 }
 
 ul {
   list-style-type: none;
+}
+
+p {
+  font-size: 32px;
+}
+
+label {
+
+}
+
+input {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 32px;
+}
+textarea {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 32px;
+}
+li {
+  font-size: 32px;
 }
 
 #title {
@@ -49,4 +78,5 @@ ul {
   width: 650px;
   margin-left: auto;
   margin-right: auto;
+  font-weight: bold;
 }

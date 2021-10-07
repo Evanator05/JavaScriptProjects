@@ -5,8 +5,8 @@ var upKey=38, downKey=40;
 //an array of every game object
 var objects = [];
 
-var difficultySettings = [3,5,7];
-var difficultyMode = 1;
+var difficultySettings = [3,5,7,40];
+var difficultyMode = 2;
 
 //changes the game speed
 var SPEED_FACTOR = 1;
@@ -55,7 +55,7 @@ function main() {
 function init() {
 
   document.getElementById("pageName").innerHTML = "Pong Score: (" + score.p1 + "/" + score.p2 + ")"
-  
+
   //instance objects
   let ball = new Ball((WIDTH+10)/2,(HEIGHT - 10)/2,10,4,0,"white");
   let leftPaddle = new Paddle(20, (HEIGHT - 100)/2, 20, 100, "blue");
@@ -84,7 +84,7 @@ function init() {
 function update() {
   //update all objects
   for (i = 0; i < objects.length; i++) {
-    objects[i].update()
+    objects[i].update();
   }
 }
 
@@ -99,7 +99,7 @@ function draw() {
   //draw center line
   var w = 4;
   var x = (WIDTH-w)*0.5;
-  var y = 0
+  var y = 0;
   var step = HEIGHT/16;
   while (y < HEIGHT) {
     ctx.fillRect(x,y+step*0.25, w, step*0.5);
@@ -117,7 +117,7 @@ function draw() {
 
   //draw objects
   for (i = 0; i < objects.length; i++) {
-    objects[i].draw()
+    objects[i].draw();
   };
 };
 
@@ -126,10 +126,10 @@ function getDistanceBetween(x1, y1, x2, y2) {
 };
 
 function deg2Rad(degrees) {
-  return degrees * (pi/180)
+  return degrees * (pi/180);
 };
 function rad2Deg(radians) {
-  return radians * (180/pi)
+  return radians * (180/pi);
 };
 
 function getAngleTo(x1,y1,x2,y2) {
@@ -140,7 +140,7 @@ function getAngleTo(x1,y1,x2,y2) {
 function drawBox(xPos,yPos,width,height,colour) {
   ctx.save();
   ctx.fillStyle = colour;
-  ctx.fillRect(xPos,yPos,width, height);
+  ctx.fillRect(xPos,yPos,width,height);
   ctx.restore();
 };
 
@@ -163,12 +163,12 @@ function reload() {
 
 function singleplayer() {
   mode = 2;
-  init()
+  init();
 };
 
 function multiplayer() {
   mode = 1;
-  init()
+  init();
 }
 
 main();

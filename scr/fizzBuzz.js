@@ -1,8 +1,8 @@
 let answer = [];
-let amount = 9999;
+let amount = 10000;
 
 function main() {
-  for (let i = 0; i < amount; i++) {
+  for (let i = 1; i <= amount; i++) {
     if (i%3==0 && i%5==0) {
       answer.push("FizzBuzz");
     } else if (i%3==0) {

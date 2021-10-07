@@ -37,12 +37,12 @@
       <!-- Non-breaking real space, adds real space to the webpage that is not eliminated by the browser (hardcoded space) -->
       <p>
         <label for="textfield">Width:</label>
-        <input type="text" name="textfield1" id="textfield1">
+        <input type="number" name="textfield1" id="textfield1">
       </p>
 
       <p>
         <label for="textfield">Height:</label>
-        <input type="text" name="textfield2" id="textfield2">
+        <input type="number" name="textfield2" id="textfield2">
       </p>
 
       <form action="x.html" method="post" onsubmit="event.preventDefault">
@@ -50,9 +50,7 @@
     <br>
     <button type="button" onclick="main()" name="button">Submit</button>
     <br>
-    <h3>The answer is:
-      <a id="answer">What is the Answer?!!!</a>
-    </h3>
+    <h3>The answer is:<a id="answer"></a></h3>
 
     </section>
 
