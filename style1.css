@@ -43,10 +43,7 @@ ul {
 
 p {
   font-size: 32px;
-}
-
-label {
-
+  text-shadow: 2px 2px 2px #FFFFFF;
 }
 
 input {
@@ -63,6 +60,7 @@ textarea {
   box-sizing: border-box;
   font-size: 32px;
 }
+
 li {
   font-size: 32px;
 }

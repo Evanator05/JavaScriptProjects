@@ -32,4 +32,5 @@ function getGrade(number) {
 function pressed() {
   let text = document.getElementById("grades").value
   document.getElementById("grade").innerHTML = getGrade(returnAverage(text))
+  document.getElementById("average").innerHTML = Math.round(returnAverage(text))
 };
