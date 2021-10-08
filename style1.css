@@ -1,12 +1,12 @@
 body {
   text-align: center;
   padding: 10px;
-  border: 15px solid red;
   background:linear-gradient(to top, white 5%, gray 100%);
+  margin-bottom: 200px;
 }
 
 button {
-	background:linear-gradient(to bottom, #00ff26 5%, #40b800 100%);
+	background:linear-gradient(to bottom, blue 5%, darkblue 100%);
 	background-color:#00ff26;
 	border-radius:17px;
 	border:2px solid #000000;
@@ -68,7 +68,7 @@ li {
 #title {
   color: white;
   text-shadow:2px 2px 2px #000000;
-	background:linear-gradient(to bottom, #00ff26 5%, #40b800 100%);
+	background:linear-gradient(to bottom, purple 5%, black 120%);
   background-color: lime;
   font-size: 64px;
   border: 2px solid black;
