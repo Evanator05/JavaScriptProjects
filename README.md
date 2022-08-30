@@ -1,1 +1,1 @@
-# all my javascript projects
+# Comp Sci 20 Projects
