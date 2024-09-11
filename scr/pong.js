@@ -29,8 +29,8 @@ function main() {
   document.body.appendChild(canvas);
 
   keystate = {};
-  keystate[38] = false;
-  keystate[40] = false;
+  keystate[73] = false;
+  keystate[75] = false;
   keystate[83] = false;
   keystate[87] = false;
   document.addEventListener("keydown", function(evt) {
