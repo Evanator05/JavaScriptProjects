@@ -99,7 +99,7 @@ class Paddle {
 };
 
 class Player {
-  constructor(paddle, speed = 7,keyUp = 38, keyDown = 40) {
+  constructor(paddle, speed = 7,keyUp = 73, keyDown = 75) {
     this.paddle = paddle;
     this.speed = speed;
     this.keyUp = keyUp;
